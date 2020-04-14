@@ -52,7 +52,7 @@ async function renderData() {
         `
       <p>Paese : ${provincestate != "" ? provincestate : countryregion}</p>
       <p>Numero di casi totali : ${confirmed}</p>
-      <button onclick='showDetails(${confirmed},${deaths},${recovered})' class="details">Guarda dettagli</button>`
+      <button onclick='showDetails(${confirmed},${deaths},${recovered}) ' class="details">Guarda dettagli</button>`
       );
       const el = document.createElement("div");
       el.class = "marker";
@@ -63,41 +63,55 @@ async function renderData() {
         .setPopup(popup)
         .addTo(map);
     }
-    // const buttons = document.querySelectorAll("details");
-    // console.log(buttons);
-    // buttons.forEach((button) => {
-    //   button.addEventListener("click", () => {
-    //     console.log("hello");
-    //   });
-    // });
   });
 }
 
-function showDetails(confirmed, recovered, deaths) {
+function showDetails(confirmed, recovered, deaths, country) {
   var textToOutput = `
-  <div  class="confirmed">
+  <div  class="confirmed col-md-4">
     <i class="fas fa-head-side-mask"></i> 
     <p>Casi confermati</p>
-    <p>${confirmed}</p>
+    <p id="confirmed">${confirmed}</p>
   </div >
 `;
   if (recovered != undefined) {
     textToOutput += `
-    <div class="recovered">
+    <div class="recovered col-md-4">
       <i class="fas fa-heartbeat"></i>
       <p>Ricoverati</p>
-      <p>${recovered}</p>
+      <p id="recovered">${recovered}</p>
     </div>
   `;
   }
   if (deaths != undefined) {
     textToOutput += `
-    <div  class="deaths">
+    <div  class="deaths col-md-4">
       <i class="fas fa-cross"></i>
       <p>Deceduti</p>
-      <p>${deaths}</p>
+      <p id="deaths">${deaths}</p>
     </div>
   `;
   }
   output.innerHTML = textToOutput;
+  const countUpConfirmed = new CountUp("confirmed", 0, confirmed);
+  countUpConfirmed.start();
+  const countUpRecovered = new CountUp("recovered", 0, recovered);
+  countUpRecovered.start();
+  const countUpDeaths = new CountUp("deaths", 0, deaths);
+  countUpDeaths.start();
+
+  window.scrollBy(0, 1000);
 }
+
+const elements = document.querySelectorAll(
+  ".fa-instagram, .fa-facebook, .fa-linkedin, .fa-github , .fa-skype"
+);
+
+elements.forEach((element) => {
+  element.addEventListener("mouseenter", () => {
+    element.classList.add("fa-spin");
+  });
+  element.addEventListener("mouseleave", () => {
+    element.classList.remove("fa-spin");
+  });
+});

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Mr2803/covid-map#readme",
   "dependencies": {
+    "countup.js": "^2.0.4",
     "node-sass": "^4.13.1"
   }
 }

@@ -2,12 +2,13 @@ body {
   margin: 0;
   padding: 0; }
   body #map {
-    height: 100vh;
+    height: 80vh;
     width: 100%; }
   body #output {
     margin-top: 20px;
     display: flex;
-    justify-content: space-around; }
+    justify-content: space-around;
+    flex-wrap: wrap; }
     body #output div {
       text-align: center; }
       body #output div p {
@@ -40,3 +41,34 @@ body {
         color: #ff4757; }
     body #output i {
       font-size: 5rem; }
+
+#main-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  background: #2b2b2b;
+  color: set-text-color(#444);
+  height: 60px;
+  margin-top: 1rem; }
+  #main-footer a {
+    margin-right: 10px; }
+  #main-footer .signature {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+    #main-footer .signature img {
+      width: 150px; }
+  #main-footer a {
+    padding: 0.4rem; }
+  #main-footer .instagram:hover {
+    color: #d43519; }
+  #main-footer .facebook:hover {
+    color: #3b5998; }
+  #main-footer .linkedin:hover {
+    color: #3b6c88; }
+  #main-footer .github:hover {
+    color: #9919d4; }
+  #main-footer .skype:hover {
+    color: #00aff0; }

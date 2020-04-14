@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  padding: 0;
+  #map {
+    height: 80vh;
+    width: 100%;
+  }
+  #output {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    div {
+      text-align: center;
+      p {
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        color: #2f3542;
+        line-height: 1;
+        margin: 1.5rem 0;
+      }
+    }
+    .confirmed {
+      color: #ffa502;
+
+      @include details(#ffa502);
+    }
+    .recovered {
+      color: #2ed573;
+
+      @include details(#2ed573);
+    }
+    .deaths {
+      color: #ff4757;
+      @include details(#ff4757);
+    }
+
+    i {
+      font-size: 5rem;
+    }
+  }
+}
