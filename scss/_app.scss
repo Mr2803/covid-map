@@ -1,15 +1,23 @@
 body {
   margin: 0;
   padding: 0;
+  background: #191a1a;
   #map {
     height: 80vh;
     width: 100%;
   }
+  .marker {
+    border-radius: 100%;
+  }
   #output {
+    min-height: 20vh;
     margin-top: 20px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    h1 {
+      color: #e8e8e8;
+    }
     div {
       text-align: center;
       p {
@@ -19,6 +27,7 @@ body {
         color: #2f3542;
         line-height: 1;
         margin: 1.5rem 0;
+        color: #e8e8e8;
       }
     }
     .confirmed {

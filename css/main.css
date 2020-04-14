@@ -1,14 +1,20 @@
 body {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  background: #191a1a; }
   body #map {
     height: 80vh;
     width: 100%; }
+  body .marker {
+    border-radius: 100%; }
   body #output {
+    min-height: 20vh;
     margin-top: 20px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap; }
+    body #output h1 {
+      color: #e8e8e8; }
     body #output div {
       text-align: center; }
       body #output div p {
@@ -17,7 +23,8 @@ body {
         letter-spacing: 0.1rem;
         color: #2f3542;
         line-height: 1;
-        margin: 1.5rem 0; }
+        margin: 1.5rem 0;
+        color: #e8e8e8; }
     body #output .confirmed {
       color: #ffa502; }
       body #output .confirmed p:nth-child(2) {

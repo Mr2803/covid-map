@@ -13,12 +13,30 @@ var map = new mapboxgl.Map({
 
 const getColorFromCountConfirmed = (count) => {
   if (count >= 100) {
-    return "red";
+    return "#ff000059";
   }
   if (count >= 10) {
-    return "blue";
+    return "#0000ff69";
   }
   return "gray";
+};
+const getSizeFromCountConfirmed = (count) => {
+  if (count >= 100) {
+    return [50, 50];
+  }
+  if (count >= 10) {
+    return [20, 20];
+  }
+  return [10, 10];
+};
+const getBorderFromCountConfirmed = (count) => {
+  if (count >= 100) {
+    return "1px solid red";
+  }
+  if (count >= 10) {
+    return "1px solid blue";
+  }
+  return "#e8e8e8";
 };
 
 renderData();
@@ -38,7 +56,7 @@ async function renderData() {
   console.log(data);
   data.forEach((element) => {
     //nuova feat di ES6 , passando i dati in questo modo le mie const assumono il valore di element.confirmed , etc
-    const {
+    let {
       confirmed,
       countryregion,
       location,
@@ -48,17 +66,32 @@ async function renderData() {
       lastupdate,
     } = element;
     if (confirmed > 0) {
+      var geojson = {
+        type: "FeatureCollection",
+        features: {
+          type: "Feature",
+          properties: {
+            iconSize: getSizeFromCountConfirmed(confirmed),
+            background: getColorFromCountConfirmed(confirmed),
+            border: getBorderFromCountConfirmed(confirmed),
+          },
+        },
+      };
+      console.log(geojson);
+      if (provincestate == "") provincestate = countryregion;
       var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
         `
-      <p>Paese : ${provincestate != "" ? provincestate : countryregion}</p>
+      <p>Paese : ${provincestate}</p>
       <p>Numero di casi totali : ${confirmed}</p>
-      <button onclick='showDetails(${confirmed},${deaths},${recovered}) ' class="details">Guarda dettagli</button>`
+      <button onclick='showDetails(${confirmed},${deaths},${recovered},"${provincestate}") '>Guarda dettagli</button>`
       );
       const el = document.createElement("div");
-      el.class = "marker";
-      new mapboxgl.Marker({
-        color: getColorFromCountConfirmed(confirmed),
-      })
+      el.className = "marker";
+      el.style.background = geojson.features.properties.background;
+      el.style.width = geojson.features.properties.iconSize[0] + "px";
+      el.style.height = geojson.features.properties.iconSize[1] + "px";
+      el.style.border = geojson.features.properties.border;
+      new mapboxgl.Marker(el)
         .setLngLat([location.lng, location.lat])
         .setPopup(popup)
         .addTo(map);
@@ -68,6 +101,7 @@ async function renderData() {
 
 function showDetails(confirmed, recovered, deaths, country) {
   var textToOutput = `
+  <h1 class="col-12 text-center">${country}</h1>
   <div  class="confirmed col-md-4">
     <i class="fas fa-head-side-mask"></i> 
     <p>Casi confermati</p>
