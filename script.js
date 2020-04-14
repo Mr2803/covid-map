@@ -74,52 +74,30 @@ async function renderData() {
 }
 
 function showDetails(confirmed, recovered, deaths) {
-  if (recovered == undefined && deaths == undefined) {
-    output.innerHTML = `
-    <div  class="confirmed">
-     <i class="fas fa-head-side-mask"></i> 
-  <p> ${confirmed}</p>
-    </div>
-    
-  `;
-  } else if (recovered == undefined) {
-    output.innerHTML = `<div class="confirmed">
-     <i class="fas fa-head-side-mask"></i> 
-     <p>casi confermati</p>
-     <p>${confirmed}</p>
-    </div>
-    <div  class="deaths">
-  <i class="fas fa-cross"></i>
-   <p>Deceduti</p>
-  <p>${deaths}</p>
-    </div>`;
-  } else if (deaths == undefined) {
-    output.innerHTML = `<div  class="confirmed">
-     <i class="fas fa-head-side-mask"></i> 
-     <p>casi confermati</p>
-     <p>${confirmed}</p>
-    </div>
-    <div  class="recovered">
-  <i class="fas fa-heartbeat"></i>
-  <p>Ricoverati</p>
-  <p>${recovered}</p>
-    </div>`;
-  } else {
-    output.innerHTML = `
-    <div  class="confirmed">
-     <i class="fas fa-head-side-mask"></i> 
-     <p>Casi confermati</p>
-<p>${confirmed}</p>
-    </div >
+  var textToOutput = `
+  <div  class="confirmed">
+    <i class="fas fa-head-side-mask"></i> 
+    <p>Casi confermati</p>
+    <p>${confirmed}</p>
+  </div >
+`;
+  if (recovered != undefined) {
+    textToOutput += `
     <div class="recovered">
-  <i class="fas fa-heartbeat"></i>
-  <p>Ricoverati</p>
-<p>${recovered}</p>
+      <i class="fas fa-heartbeat"></i>
+      <p>Ricoverati</p>
+      <p>${recovered}</p>
     </div>
-    <div  class="deaths">
-  <i class="fas fa-cross"></i>
-  <p>Deceduti</p>
-  <p>${deaths}</p>
-    </div>`;
+  `;
   }
+  if (deaths != undefined) {
+    textToOutput += `
+    <div  class="deaths">
+      <i class="fas fa-cross"></i>
+      <p>Deceduti</p>
+      <p>${deaths}</p>
+    </div>
+  `;
+  }
+  output.innerHTML = textToOutput;
 }
