@@ -1,0 +1,42 @@
+body {
+  margin: 0;
+  padding: 0; }
+  body #map {
+    height: 100vh;
+    width: 100%; }
+  body #output {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around; }
+    body #output div {
+      text-align: center; }
+      body #output div p {
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        color: #2f3542;
+        line-height: 1;
+        margin: 1.5rem 0; }
+    body #output .confirmed {
+      color: #ffa502; }
+      body #output .confirmed p:nth-child(2) {
+        font-size: 1.5rem;
+        margin: 1.5rem 0;
+        text-transform: uppercase;
+        color: #ffa502; }
+    body #output .recovered {
+      color: #2ed573; }
+      body #output .recovered p:nth-child(2) {
+        font-size: 1.5rem;
+        margin: 1.5rem 0;
+        text-transform: uppercase;
+        color: #2ed573; }
+    body #output .deaths {
+      color: #ff4757; }
+      body #output .deaths p:nth-child(2) {
+        font-size: 1.5rem;
+        margin: 1.5rem 0;
+        text-transform: uppercase;
+        color: #ff4757; }
+    body #output i {
+      font-size: 5rem; }

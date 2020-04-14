@@ -1,0 +1,22 @@
+{
+  "name": "covid",
+  "version": "1.0.0",
+  "description": "Simple interactive map for covid19",
+  "main": "script.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o css/ --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mr2803/covid-map.git"
+  },
+  "author": "Marco Rispoli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mr2803/covid-map/issues"
+  },
+  "homepage": "https://github.com/Mr2803/covid-map#readme",
+  "dependencies": {
+    "node-sass": "^4.13.1"
+  }
+}
