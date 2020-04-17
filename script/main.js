@@ -117,7 +117,7 @@ function showDetails(confirmed, recovered, deaths, country) {
     textToOutput += `
     <div class="recovered col-md-3">
       <i class="fas fa-heartbeat"></i>
-      <p>Ricoverati</p>
+      <p>Guariti</p>
       <p id="recovered">${recovered}</p>
     </div>
   `;
