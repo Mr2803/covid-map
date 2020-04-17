@@ -85,7 +85,7 @@ async function renderData() {
 
             <p><strong>Paese</strong> : ${provincestate}</p>
             <p>Numero di casi totali : ${confirmed}</p>
-            <button class="btn btn-info btn-sm" onclick='showDetails(${confirmed},${deaths},${recovered},"${provincestate}") '>Mostra dettagli</button>
+            <button class="btn btn-info btn-sm" onclick='showDetails(${confirmed},${recovered},${deaths},"${provincestate}") '>Mostra dettagli</button>
       </div>`
       );
       const el = document.createElement("div");
