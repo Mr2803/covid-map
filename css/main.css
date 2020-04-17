@@ -6,7 +6,10 @@ body {
     height: 80vh;
     width: 100%; }
   body .marker {
-    border-radius: 100%; }
+    border-radius: 100%;
+    box-shadow: 0 0 0 0 black; }
+    body .marker:hover {
+      cursor: pointer; }
   body #output {
     min-height: 20vh;
     margin-top: 20px;
@@ -46,8 +49,30 @@ body {
         margin: 1.5rem 0;
         text-transform: uppercase;
         color: #ff4757; }
+    body #output .mortality {
+      display: inline;
+      color: #ac47ff; }
+      body #output .mortality p:nth-child(2) {
+        font-size: 1.5rem;
+        margin: 1.5rem 0;
+        text-transform: uppercase;
+        color: #ac47ff; }
     body #output i {
       font-size: 5rem; }
+
+.mapboxgl-popup-close-button {
+  font-size: 20px; }
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7); }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); } }
 
 #main-footer {
   display: flex;
@@ -69,13 +94,13 @@ body {
       width: 150px; }
   #main-footer a {
     padding: 0.4rem; }
-  #main-footer .instagram:hover {
+  #main-footer .instagram {
     color: #d43519; }
-  #main-footer .facebook:hover {
+  #main-footer .facebook {
     color: #3b5998; }
-  #main-footer .linkedin:hover {
+  #main-footer .linkedin {
     color: #3b6c88; }
-  #main-footer .github:hover {
+  #main-footer .github {
     color: #9919d4; }
-  #main-footer .skype:hover {
+  #main-footer .skype {
     color: #00aff0; }

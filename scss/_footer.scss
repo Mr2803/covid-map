@@ -6,7 +6,6 @@
   background: darken(#444, 10);
   color: set-text-color(#444);
   height: 60px;
-
   a {
     margin-right: 10px;
   }
@@ -26,28 +25,18 @@
     padding: 0.4rem;
   }
   .instagram {
-    &:hover {
-      color: rgb(212, 53, 25);
-    }
+    color: rgb(212, 53, 25);
   }
   .facebook {
-    &:hover {
-      color: #3b5998;
-    }
+    color: #3b5998;
   }
   .linkedin {
-    &:hover {
-      color: rgb(59, 108, 136);
-    }
+    color: rgb(59, 108, 136);
   }
   .github {
-    &:hover {
-      color: rgb(153, 25, 212);
-    }
+    color: rgb(153, 25, 212);
   }
   .skype {
-    &:hover {
-      color: #00aff0;
-    }
+    color: #00aff0;
   }
 }

@@ -81,9 +81,12 @@ async function renderData() {
       if (provincestate == "") provincestate = countryregion;
       var popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
         `
-      <p>Paese : ${provincestate}</p>
-      <p>Numero di casi totali : ${confirmed}</p>
-      <button onclick='showDetails(${confirmed},${deaths},${recovered},"${provincestate}") '>Guarda dettagli</button>`
+      <div class="d-flex flex-column">
+
+            <p><strong>Paese</strong> : ${provincestate}</p>
+            <p>Numero di casi totali : ${confirmed}</p>
+            <button class="btn btn-info btn-sm" onclick='showDetails(${confirmed},${deaths},${recovered},"${provincestate}") '>Mostra dettagli</button>
+      </div>`
       );
       const el = document.createElement("div");
       el.className = "marker";
@@ -91,6 +94,7 @@ async function renderData() {
       el.style.width = geojson.features.properties.iconSize[0] + "px";
       el.style.height = geojson.features.properties.iconSize[1] + "px";
       el.style.border = geojson.features.properties.border;
+
       new mapboxgl.Marker(el)
         .setLngLat([location.lng, location.lat])
         .setPopup(popup)
@@ -100,9 +104,10 @@ async function renderData() {
 }
 
 function showDetails(confirmed, recovered, deaths, country) {
-  var textToOutput = `
+  let mortality = (deaths * 100) / confirmed;
+  let textToOutput = `
   <h1 class="col-12 text-center">${country}</h1>
-  <div  class="confirmed col-md-4">
+  <div  class="confirmed col-md-3">
     <i class="fas fa-head-side-mask"></i> 
     <p>Casi confermati</p>
     <p id="confirmed">${confirmed}</p>
@@ -110,7 +115,7 @@ function showDetails(confirmed, recovered, deaths, country) {
 `;
   if (recovered != undefined) {
     textToOutput += `
-    <div class="recovered col-md-4">
+    <div class="recovered col-md-3">
       <i class="fas fa-heartbeat"></i>
       <p>Ricoverati</p>
       <p id="recovered">${recovered}</p>
@@ -119,10 +124,19 @@ function showDetails(confirmed, recovered, deaths, country) {
   }
   if (deaths != undefined) {
     textToOutput += `
-    <div  class="deaths col-md-4">
+    <div  class="deaths col-md-3">
       <i class="fas fa-cross"></i>
       <p>Deceduti</p>
       <p id="deaths">${deaths}</p>
+    </div>
+    <div  class="mortality col-md-3">
+      <i class="fas fa-percent"></i>
+      <p>Tasso di Mortalità</p>
+      <div class='d-flex justify-content-center'>
+
+        <p id="mortality" class="m-0">${mortality} </p>
+        <p>%</p>
+      </div>
     </div>
   `;
   }
@@ -133,8 +147,10 @@ function showDetails(confirmed, recovered, deaths, country) {
   countUpRecovered.start();
   const countUpDeaths = new CountUp("deaths", 0, deaths);
   countUpDeaths.start();
+  const countUpMortality = new CountUp("mortality", 0, mortality);
+  countUpMortality.start();
 
-  window.scrollBy(0, 1000);
+  window.scrollTo({ top: 1000, behavior: "smooth" });
 }
 
 const elements = document.querySelectorAll(

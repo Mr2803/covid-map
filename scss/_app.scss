@@ -8,6 +8,10 @@ body {
   }
   .marker {
     border-radius: 100%;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
+    &:hover {
+      cursor: pointer;
+    }
   }
   #output {
     min-height: 20vh;
@@ -44,9 +48,35 @@ body {
       color: #ff4757;
       @include details(#ff4757);
     }
+    .mortality {
+      display: inline;
+      color: #ac47ff;
+      @include details(#ac47ff);
+    }
 
     i {
       font-size: 5rem;
     }
+  }
+}
+
+.mapboxgl-popup-close-button {
+  font-size: 20px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
